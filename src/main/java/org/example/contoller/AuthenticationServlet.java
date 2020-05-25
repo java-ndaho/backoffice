@@ -15,7 +15,6 @@ public class AuthenticationServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         final String login = request.getParameter("login");
-
         final String password = request.getParameter("password");
         if((login.equals("michel")&&password.equals("123456")) || (login.equals("caroline")&& password.equals("abcdef"))){
             HttpSession session=request.getSession();
