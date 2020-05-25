@@ -15,10 +15,6 @@ import java.io.PrintWriter;
 @WebServlet(name = "AddWorkServlet ", urlPatterns = {"/add-work"})
 public class AddWorkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         final String titre = request.getParameter("titre");
         final String annee = request.getParameter("annee");
@@ -35,5 +31,8 @@ public class AddWorkServlet extends HttpServlet {
         out.print("<html><body>Le film a été ajouté<br>");
         out.print("<a href=\"home\">Retour à l'acceuil</a><br>");
         out.print("</body></html>");
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
