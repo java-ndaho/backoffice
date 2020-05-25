@@ -5,15 +5,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "AuthenticationServlet ",urlPatterns = {"/login"})
 public class AuthenticationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session=request.getSession();
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         final String login = request.getParameter("login");
+        session.setAttribute("identifiant",login);
         final String password = request.getParameter("password");
         if((login.equals("michel")&&password.equals("123456")) || (login.equals("caroline")&& password.equals("abcdef"))){
             out.println("<html><body> <p>connexion réussie</p><br>");
