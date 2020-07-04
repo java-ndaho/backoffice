@@ -1,9 +1,11 @@
 package org.example.contoller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.example.models.Artist;
 import org.example.models.Catalogue;
 import org.example.models.Work;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "AddWorkServlet ", urlPatterns = {"/add-work"})
 public class AddWorkServlet extends HttpServlet {
@@ -26,13 +29,19 @@ public class AddWorkServlet extends HttpServlet {
         work.setGenre(genre);
         work.setSummary(summary);
         work.setMainArtist(new Artist(artistName));
-        Catalogue.listsOfWorks.add(work);
-        PrintWriter out = response.getWriter();
-        out.print("<html><body>Le film a été ajouté<br>");
-        out.print("<a href=\"home\">Retour à l'acceuil</a><br>");
-        out.print("</body></html>");
+
+// check
+        if (!StringUtils.isNumeric(annee) || Catalogue.exist(Catalogue.listsOfWorks, work)) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("workAddedFailureServlet");
+            requestDispatcher.forward(request, response);
+        } else {
+            Catalogue.listsOfWorks.add(work);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("workAddedSuccessServlet");
+            requestDispatcher.forward(request, response);
+        }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException {
     }
 }
