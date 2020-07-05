@@ -16,7 +16,7 @@
         <%
      String  identifiant =(String) session.getAttribute("login");
      if(identifiant!=null){%>
-    Bonjour <%=identifiant%>
+    Bonjour ${sessionScope.login}
 <p><a href="logout">(Déconnexion)</a></p>
 <%}%>
 
