@@ -48,9 +48,10 @@ public class CatalogueServlet extends HttpServlet {
             Catalogue.listsOfWorks.addAll(Arrays.asList(mirror, bad, laLegende));
 
         }
-        out.println("<html><body> <h1>Oeuvres au catalogue</h1><br>");
-        for (Work cat : Catalogue.listsOfWorks) {
-            out.println("<p>" + cat.getTitle() + "</html></body> <br>");
-        }
+//        out.println("<html><body> <h1>Oeuvres au catalogue</h1><br>");
+//        for (Work cat : Catalogue.listsOfWorks) {
+//            out.println("<p>" + cat.getTitle() + "</p>");
+//        }
+//        out.println("</html></body>");
     }
 }

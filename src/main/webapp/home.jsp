@@ -21,6 +21,6 @@
 <%}%>
 
 <a href="add-work-form.html">Ajouter une oeuvre au catalogue</a><br>
-<a href="catalogue">Accés aux au catalogue</a><br>
+<a href="catalogue.jsp">Accés aux au catalogue</a><br>
 </body>
 </html>
