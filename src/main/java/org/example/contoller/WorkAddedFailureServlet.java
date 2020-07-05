@@ -13,11 +13,11 @@ public class WorkAddedFailureServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.print("<html><body><p>Une erreur est survenue, l'oeuvre n'a pas été ajoutée<p><br>");
+        String errorMessage=(String)request.getAttribute("errorMessage");
+        out.print("<html><body><p>Une erreur est survenue, l'oeuvre n'a pas été ajoutée, "+errorMessage +"<p><br>");
         out.print("</body></html>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("test");
     }
 }

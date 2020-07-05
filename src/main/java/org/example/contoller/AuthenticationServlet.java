@@ -18,9 +18,9 @@ public class AuthenticationServlet extends HttpServlet {
         final String password = request.getParameter("password");
         if((login.equals("Honore")&&password.equals("123456")) || (login.equals("honore2")&& password.equals("abcdef"))){
             HttpSession session=request.getSession();
-            session.setAttribute("identifiant",login);
+            session.setAttribute("login",login);
             out.println("<html><body> <p>connexion réussie</p><br>");
-            out.println("<a href=\"home\"> Allez à la home </a></body></html><br>");
+            out.println("<a href=\"home.jsp\"> Allez à la home </a></body></html><br>");
         } else {
             out.println("<html><body> <p>login / mdp erroné</p><br>");
             out.println("<a href=\"login.html\"> Réessayez</a></body></html><br>");

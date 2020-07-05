@@ -32,12 +32,23 @@ public class AddWorkServlet extends HttpServlet {
 
 // check
         if (!StringUtils.isNumeric(annee) || Catalogue.exist(Catalogue.listsOfWorks, work)) {
+            String errorMessage = null;
+//            Ajouter un message qui preciser l'erreur
+            if (!StringUtils.isNumeric(annee)) {
+                errorMessage = "L'année de sortie doit etre numerique";
+            } else {
+                errorMessage = "L'oeuvre existe deja";
+            }
+            request.setAttribute("errorMessage", errorMessage);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("workAddedFailureServlet");
             requestDispatcher.forward(request, response);
         } else {
             Catalogue.listsOfWorks.add(work);
+            request.setAttribute("identifiantOeuvre", work.getId());
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("workAddedSuccessServlet");
             requestDispatcher.forward(request, response);
+
+
         }
     }
 
