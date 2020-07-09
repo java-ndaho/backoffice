@@ -4,6 +4,7 @@ import org.example.models.Artist;
 import org.example.models.Catalogue;
 import org.example.models.Work;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,6 @@ public class CatalogueServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
         if (Catalogue.listsOfWorks.isEmpty()) {
             Artist tomCruise = new Artist("Tom");
             Artist honore = new Artist("Honore");
@@ -48,10 +47,8 @@ public class CatalogueServlet extends HttpServlet {
             Catalogue.listsOfWorks.addAll(Arrays.asList(mirror, bad, laLegende));
 
         }
-//        out.println("<html><body> <h1>Oeuvres au catalogue</h1><br>");
-//        for (Work cat : Catalogue.listsOfWorks) {
-//            out.println("<p>" + cat.getTitle() + "</p>");
-//        }
-//        out.println("</html></body>");
+        request.setAttribute("listOuevres",Catalogue.listsOfWorks);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/catalogue.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
