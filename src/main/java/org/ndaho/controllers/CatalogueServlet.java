@@ -1,11 +1,10 @@
-package org.example.contoller;
+package org.ndaho.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.models.Artist;
 import org.example.models.Catalogue;
 import org.example.models.Work;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

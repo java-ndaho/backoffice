@@ -9,4 +9,14 @@
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
+<!--Servlet frontal-->
+    <servlet>
+        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+        <url-pattern>/ndaho-api/*</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

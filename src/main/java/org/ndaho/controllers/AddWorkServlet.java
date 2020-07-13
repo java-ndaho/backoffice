@@ -1,4 +1,4 @@
-package org.example.contoller;
+package org.ndaho.controllers;
 
 import org.apache.commons.lang3.StringUtils;
 import org.example.models.Artist;
@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet(name = "AddWorkServlet ", urlPatterns = {"/add-work"})
 public class AddWorkServlet extends HttpServlet {

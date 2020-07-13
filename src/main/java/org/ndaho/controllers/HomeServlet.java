@@ -1,4 +1,4 @@
-package org.example.contoller;
+package org.ndaho.controllers;
 
 
 import javax.servlet.ServletException;
