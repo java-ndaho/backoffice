@@ -1,5 +1,6 @@
 package org.example.contoller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.models.Artist;
 import org.example.models.Catalogue;
 import org.example.models.Work;
@@ -47,8 +48,9 @@ public class CatalogueServlet extends HttpServlet {
             Catalogue.listsOfWorks.addAll(Arrays.asList(mirror, bad, laLegende));
 
         }
-        request.setAttribute("listOuevres",Catalogue.listsOfWorks);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/catalogue.jsp");
-        requestDispatcher.forward(request, response);
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        ObjectMapper objectMapper=new ObjectMapper();
+        objectMapper.writeValue(out,Catalogue.listsOfWorks);
     }
 }
