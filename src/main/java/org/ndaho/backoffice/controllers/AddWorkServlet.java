@@ -1,9 +1,9 @@
-package org.ndaho.controllers;
+package org.ndaho.backoffice.controllers;
 
 import org.apache.commons.lang3.StringUtils;
-import org.example.models.Artist;
-import org.example.models.Catalogue;
-import org.example.models.Work;
+import org.ndaho.models.Artist;
+import org.ndaho.models.Catalogue;
+import org.ndaho.models.Work;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

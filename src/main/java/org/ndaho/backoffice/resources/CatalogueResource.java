@@ -1,26 +1,27 @@
-package org.ndaho.controllers;
+package org.ndaho.backoffice.resources;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.models.Artist;
-import org.example.models.Catalogue;
-import org.example.models.Work;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import org.ndaho.models.Artist;
+import org.ndaho.models.Catalogue;
+import org.ndaho.models.Work;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.util.Arrays;
+import java.util.List;
 
-@WebServlet(name = "CatalogueServlet", urlPatterns = {"/catalogue"})
-public class CatalogueServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@Path("/catalogue")
+public class CatalogueResource {
+    //    annotation pour path d'appel de la méthode
+    @Path("/liste")
+    //    annotation pour la methode http utilisé
+    @GET
+//    annotation pour decrire le type/format de donne retourne
+    @Produces(MediaType.APPLICATION_JSON)
 
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<Work> getAllOeuvres() {
         if (Catalogue.listsOfWorks.isEmpty()) {
             Artist tomCruise = new Artist("Tom");
             Artist honore = new Artist("Honore");
@@ -47,9 +48,7 @@ public class CatalogueServlet extends HttpServlet {
             Catalogue.listsOfWorks.addAll(Arrays.asList(mirror, bad, laLegende));
 
         }
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        ObjectMapper objectMapper=new ObjectMapper();
-        objectMapper.writeValue(out,Catalogue.listsOfWorks);
+        return Catalogue.listsOfWorks;
     }
+
 }

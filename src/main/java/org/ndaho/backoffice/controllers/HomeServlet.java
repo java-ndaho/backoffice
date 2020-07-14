@@ -1,4 +1,4 @@
-package org.ndaho.controllers;
+package org.ndaho.backoffice.controllers;
 
 
 import javax.servlet.ServletException;
