@@ -11,7 +11,10 @@
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>     
+      <sonar.projectKey>java-ndaho_backoffice</sonar.projectKey>
+      <sonar.organization>java-ndaho</sonar.organization>
+      <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>
